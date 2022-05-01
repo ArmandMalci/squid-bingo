@@ -1,17 +1,17 @@
-import { join } from 'path';
+import { join } from "path";
 
-import { Bingo } from './bingo';
-import { Board } from './board';
-import { formatDocument } from './formatDocument';
-import { generateWinningConditions } from './utils';
+import { Bingo } from "./bingo";
+import { Board } from "./board";
+import { formatDocument } from "./formatDocument";
+import { generateWinningConditions } from "./utils";
 
 const [numbersToBeCalled, boards] = formatDocument(
-  join(__dirname, 'advent-input.txt'),
+  join(__dirname, "advent-input.txt")
 );
 const winningConditions = generateWinningConditions();
 
 const bingoBoards = boards.map(
-  (numbers, index) => new Board(numbers, index, 5, winningConditions),
+  (numbers, index) => new Board(numbers, index, 5, winningConditions)
 );
 
 const game = new Bingo(bingoBoards);
@@ -25,7 +25,7 @@ const part1 = () => {
     }
   }
   if (game.winningBoards.length === 0) {
-    return 'No board won the game. Good luck next time';
+    return "No board won the game. Good luck next time";
   }
 
   const [firstBoard] = game.winningBoards;
@@ -43,7 +43,7 @@ const part2 = () => {
     }
   }
   if (game.winningBoards.length === 0) {
-    return 'No board won the game. Good luck next time';
+    return "No board won the game. Good luck next time";
   }
 
   const lastBoard = game.winningBoards[game.winningBoards.length - 1];

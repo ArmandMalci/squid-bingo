@@ -2,12 +2,12 @@ import type {
   BoardItemInterface,
   WinningConditionsInterface,
   WinningNumberType,
-} from './interfaces';
+} from "./interfaces";
 
 export class Board {
-  public name = '';
+  public name = "";
 
-  private readonly _state: BoardItemInterface[];
+  private _state: BoardItemInterface[];
 
   private _isWinner = false;
 
@@ -23,7 +23,7 @@ export class Board {
     numbers: number[],
     id: number,
     size: number,
-    winningConditions: WinningConditionsInterface,
+    winningConditions: WinningConditionsInterface
   ) {
     this._state = numbers.map((number) => ({
       isMarked: false,
@@ -88,11 +88,11 @@ export class Board {
   private isWinning(): boolean {
     return this.markedIndexes.some((value) => {
       const hasWinningColumn = !!this.winningConditionsMap[value].column.every(
-        (columnValue) => this.markedIndexes.includes(columnValue),
+        (columnValue) => this.markedIndexes.includes(columnValue)
       );
 
       const hasWinningRow = !!this.winningConditionsMap[value].row.every(
-        (columnValue) => this.markedIndexes.includes(columnValue),
+        (columnValue) => this.markedIndexes.includes(columnValue)
       );
 
       return hasWinningColumn || hasWinningRow;
